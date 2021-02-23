@@ -7,12 +7,16 @@
 // int		ft_strcpy(void);
 // char		*ft_strdup(char *s1);
 // int			ft_strlen(char *str);
-// void			ft_write(int fildes, const void *buf, int nbyte);
-void			ft_write(int fildes);
+void			ft_write(int fildes, void *buf, int nbyte);
+// void			ft_write(int fildes);
 // void			ft_write(void);
 // int		add(int a, int b);
 int		add(void);
+#include <string.h>
 int main()
 {
-	printf("%d", add());
+	int fd;
+
+	fd = open("test", O_WRONLY);
+	ft_write(1, "Hello, World", 12);
 }
