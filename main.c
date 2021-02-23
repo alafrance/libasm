@@ -7,16 +7,16 @@
 // int		ft_strcpy(void);
 // char		*ft_strdup(char *s1);
 // int			ft_strlen(char *str);
-void			ft_write(int fildes, void *buf, int nbyte);
+int				ft_write(int fildes, void *buf, int nbyte);
 // void			ft_write(int fildes);
-// void			ft_write(void);
-// int		add(int a, int b);
-int		add(void);
-#include <string.h>
+#include <stdlib.h>
 int main()
 {
 	int fd;
+	char *str;
 
+	str = malloc(sizeof(char) * 12);
 	fd = open("test", O_WRONLY);
-	ft_write(1, "Hello, World", 12);
+	printf("\n%d", ft_write(fd, "comment ca va", 13));
+	printf("\n%s", str);
 }
