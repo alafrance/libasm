@@ -7,9 +7,9 @@ _ft_strcmp:
 while:
     mov r8b, [rdi + rcx]
     mov r9b, [rsi + rcx]
-    or r8b, r8b
+    cmp r8b, 0
     je end
-    or r9b, r9b
+    cmp r9b, 0
     je end
     cmp r8b, r9b
     jne end

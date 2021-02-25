@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 14:14:13 by alafranc          #+#    #+#             */
-/*   Updated: 2021/02/25 14:14:52 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/02/25 23:43:18 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@
 #include	<unistd.h>
 #include	<errno.h>
 #include	<string.h>
-int			ft_read(int fildes, void *buf, int nbyte);
-int			ft_strcmp(char *s1, char *s2);
-char		*ft_strcpy(char *dst, char *src);
-// char		*ft_strdup(char *s1);
-int			ft_strdup(char *s1);
-int			ft_strlen(char *str);
-int			ft_write(int fildes, void *buf, int nbyte);
+ssize_t		ft_read(int fildes, void *buf, size_t nbyte);
+int			ft_strcmp(const char *s1, const char *s2);
+char		*ft_strcpy(char *dst, const char *src);
+char		*ft_strdup(const char *s1);
+size_t		ft_strlen(const char *str);
+ssize_t		ft_write(int fildes, const void *buf, size_t nbyte);
 
 #endif

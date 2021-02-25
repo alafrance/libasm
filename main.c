@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 14:14:16 by alafranc          #+#    #+#             */
-/*   Updated: 2021/02/25 18:20:08 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 00:04:28 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,14 @@ void	ft_test_write(char *filename,int nbytes)
 	errno = 0;
 	fd = open(filename, O_WRONLY);
 	r_wr = ft_write(fd, str, nbytes);
-	dprintf(1, "we write : %d\n", r_wr);
+	dprintf(1, "we write : %d! Good\n", r_wr);
+	
 }
 
 void	ft_test_strcmp()
 {
-	char	str_1[100] = "Qui fait du zele? Arice !";
-	char	str_2[100] = "Qui fait du zele? Blexis !";
+	char	str_1[100] = "Qui fait du zele? brice !";
+	char	str_2[100] = "Qui fait du zele? alexis !";
 	ft_header("strcmp");
 	dprintf(1, "my strcmp return : %d\n", ft_strcmp(str_1, str_2));
 	dprintf(1, "the strcmp return : %d\n", strcmp(str_1, str_2));
@@ -84,27 +85,78 @@ void	ft_test_strcmp()
 
 void	ft_test_strcpy()
 {
-	ft_header("strcpy");
+	char str_1[100] = "Coucou les amis c david";
+	char str_2[100] = "Salut les amis c'est jo";
+
+	ft_header("strcpy");	
+	dprintf(1, "Before cpy : str_1: %s, str_2: %s\n", str_1, str_2);
+	dprintf(1, "return cpy: %s\n", ft_strcpy(str_1, str_2));
+	dprintf(1, "After cpy : str_1: %s, str_2: %s\n", str_1, str_2);
 }
 
 void	ft_test_strdup()
 {
-	ft_header("strdup");
+	char *str;
 
+	str = NULL;
+	ft_header("strdup");
+	str = ft_strdup("Je vais etre dupliqué mon dieu !");
+	// dprintf(1, "the string is : %s NOT NULL GOOD !", str);
+	// free(str);
 }
 
 void	ft_test_strlen()
 {
+	char str[100] = "Coucou c'est david ! Oui la reponse est oui";
+
 	ft_header("strlen");
+	dprintf(1, "my ft_strlen return : %lu, the real function : %lu\n", ft_strlen(str), strlen(str));
 
 }
 
 int main()
 {
-	ft_test_read("test.txt", 20);
-	ft_test_write("empty.txt", 12);
-	ft_test_strcmp();
-	ft_test_strcpy();
-	ft_test_strdup();
-	ft_test_strlen();
+	int choice;
+	char c = 'y';
+
+	choice = 0;
+	while (c == 'y')
+	{
+		system("clear");
+		dprintf(1, "What do you want test ?\n");
+		dprintf(1, "1 - Read\n");
+		dprintf(1, "2 - Write\n");
+		dprintf(1, "3 - Strcmp\n");
+		dprintf(1, "4 - Strcpy\n");
+		dprintf(1, "5 - Strdup\n");
+		dprintf(1, "6 - Strlen\n");
+		scanf("%d", &choice);
+		system("clear");
+		switch (choice)
+		{
+			case 1:
+				ft_test_read("test.txt", 20);
+				break;
+			case 2:
+				ft_test_write("empty.txt", 12);
+				break;
+			case 3:
+				ft_test_strcmp();
+				break;
+			case 4:
+				ft_test_strcpy();
+				break;
+			case 5:
+				ft_test_strdup();
+				break;
+			case 6:
+				ft_test_strlen();
+				break;
+			default:
+				dprintf(1, "Error sorry dude :\n");
+				break;
+		}
+		dprintf(1, "\nDo you want test again ? y / n : ");
+		scanf("%s", &c);
+	}
 }
