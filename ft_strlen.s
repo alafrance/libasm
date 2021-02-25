@@ -1,7 +1,13 @@
 section .text
-      global _add
-_add:
-		mov rcx, 2
-		mov rax, 40
-		add rax, rcx
-		ret
+global _ft_strlen
+
+_ft_strlen:
+    xor rax, rax
+while:
+        mov r8b, [rdi + rax]
+        or r8b, r8b
+        je end
+        inc rax
+        jmp while
+end:
+    ret

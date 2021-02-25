@@ -1,13 +1,16 @@
-section		.text
 global		_ft_strcpy
+section		.text
 
 _ft_strcpy:
-			; mov rbx, entier1
-			; mov rcx, entier2
-			; add rbx, rcx
-			mov rax, entier1
-
-segment .data
-	entier1 db 2
-	entier2 db 3
-segment .bss
+	xor	rcx, rcx
+while:
+    mov  r8b, [rsi + rcx]       
+    mov  r9b, [rdi + rcx]       
+	mov  [rdi + rcx], r8b
+	inc	rcx
+	or	r9b, r9b
+    je end
+    jmp while
+end:
+    mov rdi, rax
+    ret
