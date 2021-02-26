@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 14:14:16 by alafranc          #+#    #+#             */
-/*   Updated: 2021/02/26 13:30:07 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 15:28:51 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	ft_header(char *filename)
 
 void	ft_test_read(char *filename, int nbytes)
 {
-	int		errno;
+	// int		errno;
 	char	str[nbytes];
 	int	fd;
 
-	errno = 0;
+	// errno = 0;÷
 	ft_header("read");
 	fd = open(filename, O_RDONLY);
 	ft_read(fd, str, nbytes);
@@ -68,9 +68,16 @@ void	ft_test_write(char *filename,int nbytes)
 		return ;
 	errno = 0;
 	fd = open(filename, O_WRONLY);
-	r_wr = ft_write(fd, str, nbytes);
-	dprintf(1, "we write : %d! Good\n", r_wr);
-	
+	r_wr = ft_write(-1, "test", -1);
+	if (r_wr == -1)
+		dprintf(1, "We write nothing, error errno: %s\n", strerror(errno));
+	else
+		dprintf(1, "Not a error. We write: %d, good !\n", r_wr);
+	r_wr = ft_write(fd, str, 10);
+	if (r_wr == -1)
+		dprintf(1, "We write nothing, error errno: %s\n", strerror(errno));
+	else
+		dprintf(1, "Not a error. We write: %d, good !\n", r_wr);
 }
 
 void	ft_test_strcmp()
@@ -98,11 +105,10 @@ void	ft_test_strdup()
 {
 	char *str;
 
-	str = NULL;
 	ft_header("strdup");
-	ft_strdup("");
-	// dprintf(1, "the string is : %s NOT NULL GOOD !", str);
-	// free(str);
+	str = ft_strdup("je vais etre duplique OUEEEEE");
+	dprintf(1, "the string is : %s NOT NULL GOOD !", str);
+	free(str);
 }
 
 void	ft_test_strlen()
@@ -116,6 +122,7 @@ void	ft_test_strlen()
 
 int main()
 {
+	int errno;
 	int choice;
 	char c = 'y';
 
@@ -123,7 +130,7 @@ int main()
 	while (c == 'y')
 	{
 		system("clear");
-		dprintf(1, "What do you want test ?\n");
+		dprintf(1, "What do you want ?\n");
 		dprintf(1, "1 - Read\n");
 		dprintf(1, "2 - Write\n");
 		dprintf(1, "3 - Strcmp\n");
@@ -156,7 +163,7 @@ int main()
 				dprintf(1, "Error sorry dude :\n");
 				break;
 		}
-		dprintf(1, "\nDo you want test again ? y / n : ");
+		dprintf(1, "\nTry again ? y / n : ");
 		scanf("%s", &c);
 	}
 }
