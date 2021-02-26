@@ -5,17 +5,22 @@ _ft_strcmp:
     xor rax, rax
     xor rcx, rcx
 while:
-    mov r8b, [rdi + rcx]
-    mov r9b, [rsi + rcx]
-    cmp r8b, 0
-    je end
-    cmp r9b, 0
-    je end
-    cmp r8b, r9b
-    jne end
+    movzx r8, BYTE [rdi + rcx]
+    movzx r9, BYTE [rsi + rcx]
+    mov r10, r8
+    or r8, r9
+    jz end
+    sub r10, r9
+    jl inf
+    jg sup
     inc rcx
     jmp while
 end:
-    add rax, r8
-    sub rax, r9
+    ret
+sup:
+    mov rax, 1
+    ret
+
+inf:
+    mov rax, -1
     ret

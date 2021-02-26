@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 14:14:16 by alafranc          #+#    #+#             */
-/*   Updated: 2021/02/26 00:04:28 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 13:30:07 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	ft_test_strdup()
 
 	str = NULL;
 	ft_header("strdup");
-	str = ft_strdup("Je vais etre dupliqué mon dieu !");
+	ft_strdup("");
 	// dprintf(1, "the string is : %s NOT NULL GOOD !", str);
 	// free(str);
 }

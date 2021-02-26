@@ -7,10 +7,12 @@ segment .text
 
 _ft_strdup:
     call _ft_strlen
+    push rdi
+    add rax, 1
     mov rdi, rax
-    ; call _malloc
-
-    ; mov rdx, rax
-    ; xor rax, rax
-    ; mov rax, [rax]
+    call _malloc
+    pop rdx
+    mov rdi, rax
+    mov rsi, rdx
+    call _ft_strcpy
     ret

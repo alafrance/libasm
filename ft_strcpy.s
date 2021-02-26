@@ -7,7 +7,7 @@ while:
     mov  r8b, [rsi + rcx]       
     mov  r9b, [rdi + rcx]       
 	mov  [rdi + rcx], r8b
-	or	r9b, r9b
+	or	r8b, r8b
     je end
 	inc	rcx
     jmp while
