@@ -1,10 +1,10 @@
-extern ___error
-global			_ft_read
-section			.text
+extern	___error
+global	_ft_read
+section	.text
 _ft_read:
-	mov			rax, 0x02000003
+	mov	rax, 0x02000003
 	syscall
-	jc		error
+	jc	error
 	ret
 
 error:

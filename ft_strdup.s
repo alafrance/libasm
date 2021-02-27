@@ -3,7 +3,7 @@ extern _ft_strlen
 extern _ft_strcpy
 global  _ft_strdup
 
-segment .text
+section .text
 
 _ft_strdup:
     call _ft_strlen

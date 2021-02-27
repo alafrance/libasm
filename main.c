@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 14:14:16 by alafranc          #+#    #+#             */
-/*   Updated: 2021/02/26 15:28:51 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2021/02/27 08:32:36 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	ft_header(char *filename)
 
 void	ft_test_read(char *filename, int nbytes)
 {
-	// int		errno;
+	int		errno;
 	char	str[nbytes];
 	int	fd;
 
-	// errno = 0;÷
+	errno = 0;
 	ft_header("read");
 	fd = open(filename, O_RDONLY);
 	ft_read(fd, str, nbytes);
